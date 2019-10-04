@@ -133,7 +133,7 @@ body {
 
 .btn-animated {
   animation: moveInButton .5s ease-out .75s;
-  animation-fill-mode: backwards; /* applies before animation starts*/
+  animation-fill-mode: backwards; /* applies 0% before animation starts*/
 }
 
 /* there are two types of animation in CSS:
