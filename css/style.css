@@ -20,10 +20,175 @@ body {
   font-size: 16px;
   line-height: 1.7; /* 1.7 times bigger than the default line height*/
   color: #777;
+  padding: 30px;
 }
 
 .header {
   height: 95vh;
-  background-image: url(../img/hero.jpg);
+  background-image: linear-gradient(
+    to right bottom, 
+    rgba(126, 213, 111, 0.8),
+    rgba(40, 180, 131, 0.8)), 
+    url(../img/hero.jpg);
   background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative; /* specifying the header position as relative means that this is the reference for it's child elements with absolute positioning*/
+}
+
+.logo-box {
+  position: absolute;
+  left: 40px; /* parent element is the reference*/
+  top: 40px;
+}
+
+.logo {
+  height: 35px; /* it's always preferred to control the height of an element over the width */
+}
+
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%); /*moves the element from one place or condition to another*/
+  text-align: center;
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;  /*determines if the back part of an element is visible to the user when we transform or animate it*/
+}
+
+.heading-primary-main {
+  display: block;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  /*animation-iteration-count: 3; /*how many times the animation will happen*/
+  /*animation-delay: 3s;*/
+}
+
+.heading-primary-sub {
+  display: block;  /* block occupies 100% of the available width and forces a line break*/
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 17.4px;
+  animation-name: moveInRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  margin-bottom: 10vh;
+}
+
+.btn:link,
+.btn:visited {  /* link -> pseudo class that defines a specific state of a selector */
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;  /* it works as it is a block element, we use this when e want to put heights, paddings or width to an element */ 
+  border-radius: 100px;
+  transition: all .2s;
+  position: relative;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+} 
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
+
+.btn::after {  /* a pseudo element is basivly trated like a child of the "parent"*/
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInButton .5s ease-out .75s;
+  animation-fill-mode: backwards; /* applies before animation starts*/
+}
+
+/* there are two types of animation in CSS:
+  Transitions and keyframes
+  Transitions are easy to use -> change element properties when an event happens, ex: it is being hovered
+  keyframes is more complex and gives you more options - therefore - more complex animations
+  Regarding performance: Is always best to animate only two properties: transform and opacity
+*/
+
+/*
+  Sometimes animations are shaky - no one really know why
+  But this is the fix setting backface-visibility: hidden on the parent of the animated element
+*/
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  80% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes moveInButton {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
