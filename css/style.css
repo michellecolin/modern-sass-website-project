@@ -1,126 +1,132 @@
-/*
-COLORS:
-
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-
 /* selects each and every selector on the page */
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; /* borders and paddings are not added to the total width or height of a box*/
-}
+  box-sizing: inherit;
+  /* borders and paddings are not added to the total width or height of a box*/ }
 
 html {
-  font-size: 62.5%; /* rem unit is always in relation to the root font size, 10px is easier to calculate */
+  font-size: 62.5%;
+  /* rem unit is always in relation to the root font size, 10px is easier to calculate */
   /* using rem units is a great practice for responsive websites
     Default browser - 16px  - so we have 62.5% = 10px
-  */
-}
+  */ }
+
+body {
+  padding: 3rem;
+  box-sizing: border-box; }
+
+/* there are two types of animation in CSS:
+  Transitions and keyframes
+  Transitions are easy to use -> change element properties when an event happens, ex: it is being hovered
+  keyframes is more complex and gives you more options - therefore - more complex animations
+  Regarding performance: Is always best to animate only two properties: transform and opacity
+*/
+/*
+  Sometimes animations are shaky - no one really know why
+  But this is the fix setting backface-visibility: hidden on the parent of the animated element
+*/
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes moveInButton {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  /*determines if the back part of an element is visible to the user when we transform or animate it*/ }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /*animation-iteration-count: 3; /*how many times the animation will happen*/
+    /*animation-delay: 3s;*/ }
+  .heading-primary--sub {
+    display: block;
+    /* block occupies 100% of the available width and forces a line break*/
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.74rem;
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    margin-bottom: 10vh; }
 
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-size: 1.6rem;
-  line-height: 1.7; /* 1.7 times bigger than the default line height*/
-  color: #777;
-  padding: 3rem;
-  box-sizing: border-box;
-}
+  line-height: 1.7;
+  /* 1.7 times bigger than the default line height*/
+  color: #777; }
 
-.header {
-  height: 95vh;
-  background-image: linear-gradient(
-    to right bottom, 
-    rgba(126, 213, 111, 0.8),
-    rgba(40, 180, 131, 0.8)), 
-    url(../img/hero.jpg);
-  background-size: cover;
-  background-position: top;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  position: relative; /* specifying the header position as relative means that this is the reference for it's child elements with absolute positioning*/
-}
-
-.header__logo-box {
-  position: absolute;
-  left: 4rem; /* parent element is the reference*/
-  top: 4rem;
-}
-
-.header__logo {
-  height: 3.5rem; /* it's always preferred to control the height of an element over the width */
-}
-
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%); /*moves the element from one place or condition to another*/
-  text-align: center;
-}
-
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  backface-visibility: hidden;  /*determines if the back part of an element is visible to the user when we transform or animate it*/
-}
-
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-  /*animation-iteration-count: 3; /*how many times the animation will happen*/
-  /*animation-delay: 3s;*/
-}
-
-.heading-primary--sub {
-  display: block;  /* block occupies 100% of the available width and forces a line break*/
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.74rem;
-  animation-name: moveInRight;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-  margin-bottom: 10vh;
-}
-
-.btn:link,
-.btn:visited {  /* link -> pseudo class that defines a specific state of a selector */
+.btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
   padding: 1.5rem 4rem;
-  display: inline-block;  /* it works as it is a block element, we use this when e want to put heights, paddings or width to an element */ 
+  display: inline-block;
+  /* it works as it is a block element, we use this when e want to put heights, paddings or width to an element */
   border-radius: 10rem;
   transition: all .2s;
   position: relative;
-  font-size: 1.6rem;
-}
-
-.btn:hover {
-  transform: translateY(-.3rem);
-  box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
-}
-
-.btn:active {
-  transform: translateY(-.1rem);
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
-} 
+  font-size: 1.6rem; }
 
 .btn--white {
   background-color: #fff;
-  color: #777;
-}
+  color: #777; }
+  .btn--white::after {
+    background-color: #fff; }
 
-.btn::after {  /* a pseudo element is basivly trated like a child of the "parent"*/
+.btn--animated {
+  animation: moveInButton .5s ease-out .75s;
+  animation-fill-mode: backwards;
+  /* applies 0% before animation starts*/ }
+
+.btn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; }
+
+.btn:active {
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+
+.btn::after {
+  /* pseudo class that defines a specific state of a selector */
   content: "";
+  /* a pseudo element is basivly trated like a child of the "parent"*/
   display: inline-block;
   height: 100%;
   width: 100%;
@@ -129,80 +135,31 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
-  transition: all .4s;
-}
+  transition: all .4s; }
 
-.btn--white::after {
-  background-color: #fff;
-}
-
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
-}
-
-.btn--animated {
-  animation: moveInButton .5s ease-out .75s;
-  animation-fill-mode: backwards; /* applies 0% before animation starts*/
-}
-
-/* there are two types of animation in CSS:
-  Transitions and keyframes
-  Transitions are easy to use -> change element properties when an event happens, ex: it is being hovered
-  keyframes is more complex and gives you more options - therefore - more complex animations
-  Regarding performance: Is always best to animate only two properties: transform and opacity
-*/
-
-/*
-  Sometimes animations are shaky - no one really know why
-  But this is the fix setting backface-visibility: hidden on the parent of the animated element
-*/
-@keyframes moveInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-10rem);
-  }
-
-  80% {
-    transform: translateX(1rem);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-
-@keyframes moveInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(10rem);
-  }
-
-  80% {
-    transform: translateX(-1rem);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-
-@keyframes moveInButton {
-  0% {
-    opacity: 0;
-    transform: translateY(3rem);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
+  /* specifying the header position as relative means that this is the reference for it's child elements with absolute positioning*/ }
+  .header__logo-box {
+    position: absolute;
+    left: 4rem;
+    /* parent element is the reference*/
+    top: 4rem; }
+  .header__logo {
+    height: 3.5rem;
+    /* it's always preferred to control the height of an element over the width */ }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*moves the element from one place or condition to another*/
+    text-align: center; }
 
 /*
   Responsive design
@@ -210,4 +167,7 @@ body {
   Writing maintanable and scalable code
     -> clean, easy to understand, reusable
   Web performance
+*/
+/* SASS
+  Mixin -> Is a reusable piece of code
 */

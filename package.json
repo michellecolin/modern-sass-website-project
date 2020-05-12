@@ -1,0 +1,24 @@
+{
+  "name": "modern-sass-website-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css -w",
+    "dev": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michellecolin/modern-sass-website-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michellecolin/modern-sass-website-project/issues"
+  },
+  "homepage": "https://github.com/michellecolin/modern-sass-website-project#readme",
+  "devDependencies": {
+    "lite-server": "^2.5.4",
+    "node-sass": "^4.12.0"
+  }
+}

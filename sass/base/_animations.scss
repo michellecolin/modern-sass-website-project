@@ -1,0 +1,56 @@
+/* there are two types of animation in CSS:
+  Transitions and keyframes
+  Transitions are easy to use -> change element properties when an event happens, ex: it is being hovered
+  keyframes is more complex and gives you more options - therefore - more complex animations
+  Regarding performance: Is always best to animate only two properties: transform and opacity
+*/
+
+/*
+  Sometimes animations are shaky - no one really know why
+  But this is the fix setting backface-visibility: hidden on the parent of the animated element
+*/
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes moveInButton {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

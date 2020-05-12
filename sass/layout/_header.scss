@@ -1,0 +1,30 @@
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+    to right bottom, 
+    rgba($color-primary-light, 0.8),
+    rgba($color-primary-dark, 0.8)), 
+    url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative; /* specifying the header position as relative means that this is the reference for it's child elements with absolute positioning*/
+
+  &__logo-box {
+    position: absolute;
+    left: 4rem; /* parent element is the reference*/
+    top: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem; /* it's always preferred to control the height of an element over the width */
+  }
+
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%); /*moves the element from one place or condition to another*/
+    text-align: center;
+  }
+}

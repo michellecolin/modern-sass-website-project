@@ -1,0 +1,21 @@
+
+/* selects each and every selector on the page */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; /* borders and paddings are not added to the total width or height of a box*/
+}
+
+html {
+  font-size: 62.5%; /* rem unit is always in relation to the root font size, 10px is easier to calculate */
+  /* using rem units is a great practice for responsive websites
+    Default browser - 16px  - so we have 62.5% = 10px
+  */
+}
+
+body {
+  padding: 3rem;
+  box-sizing: border-box;
+}
