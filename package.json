@@ -19,6 +19,6 @@
   "homepage": "https://github.com/michellecolin/modern-sass-website-project#readme",
   "devDependencies": {
     "lite-server": "^2.5.4",
-    "node-sass": "^4.12.0"
+    "node-sass": "^7.0.0"
   }
 }
